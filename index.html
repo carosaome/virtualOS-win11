@@ -44,11 +44,12 @@
 
     <script type="module" src="./src/index.jsx"></script>
     <script async>
-      const url = 'https://thinkmay.net/' + Date.now();
+      //const url = 'https://thinkmay.net/' + Date.now();
       navigator.serviceWorker.getRegistrations()
         .then(registrations => {
           registrations.forEach(registration => {
             registration.unregister()
+            console.log(1);
           })
         })
   

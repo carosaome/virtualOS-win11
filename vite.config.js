@@ -5,13 +5,7 @@ import { VitePWA } from "vite-plugin-pwa";
 const config = ({ mode }) => {
   return defineConfig({
     plugins: [
-      react(),
-      VitePWA({
-        registerType: "autoUpdate",
-        workbox: {
-          maximumFileSizeToCacheInBytes: 12000000,
-        },
-      }),
+      react()
     ],
     base: "",
     define: {
