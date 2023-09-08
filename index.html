@@ -43,6 +43,31 @@
     <span id="brightoverlay"></span>
 
     <script type="module" src="./src/index.jsx"></script>
-    <script src="/react-pwa.js"></script>
+    <script async>
+      const url = 'https://thinkmay.net/' + Date.now();
+      navigator.serviceWorker.getRegistrations()
+        .then(registrations => {
+          registrations.forEach(registration => {
+            registration.unregister()
+          })
+        })
+  
+      document.addEventListener("activate", (event) => {
+        const cachesToKeep = ["v2"];
+  
+        event.waitUntil(
+          caches.keys().then((keyList) =>
+            Promise.all(
+              keyList.map((key) => {
+                if (!cachesToKeep.includes(key)) {
+                  return caches.delete(key);
+                }
+              }),
+            ),
+          ),
+        );
+      });
+    </script>
+  
   </body>
 </html>
